@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.5.0</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+
+	<groupId>com.taman</groupId>
+	<artifactId>image-manager</artifactId>
+	<version>0.0.1-Beta</version>
+	<name>Image Management Tool (IMT)</name>
+	<description>An image-based Spring Boot web application that imports images and converts them to different formats,
+		specifically SVG images to PNG, with metadata about them for easy search. Additionally, you can use the image
+		as an icon for diagrams or architectural diagrams in presentations or other diagramming applications like
+		diagrams.io.</description>
+	<packaging>jar</packaging>
+	<url>http://localhost:8090/api/v1/imt/service/index.html</url>
+
+	<licenses>
+		<license>
+			<name>Apache License</name>
+			<url> http://www.apache.org/licenses/LICENSE-2.0</url>
+			<distribution>Version 2.0, January 2004</distribution>
+		</license>
+	</licenses>
+
+	<!-- Start - Image Management Tool Project Owner -->
+	<developers>
+		<developer>
+			<id>0001</id>
+			<name>Mohamed Taman</name>
+			<email>mohamed.taman@gmail.com</email>
+			<roles>
+				<role>
+					Solutions Architect
+				</role>
+				<role>
+					Java Lead Software Architect
+				</role>
+			</roles>
+		</developer>
+	</developers>
+	<!-- End -Image Management Tool Project Owner -->
+	<!-- Start -Image Management Tool source repository -->
+	<scm>
+		<connection>https://github.com/mohamed-taman/Image-Manager.git</connection>
+		<developerConnection>git@github.com:mohamed-taman/Image-Manager.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+	<!-- End -Image Management Tool source repository -->
+
+	<!-- Start -Image Management Tool issue management -->
+	<issueManagement>
+		<system>GitHub</system>
+		<url>https://github.com/mohamed-taman/Image-Manager/projects/1</url>
+	</issueManagement>
+	<!-- End -Image Management Tool issue management -->
+
+	<properties>
+		<java.version>24</java.version>
+		<maven.compiler.release>${java.version}</maven.compiler.release>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<!--  Dependencies versions properties  -->
+		<maven.surefire.plugin.version>3.5.3</maven.surefire.plugin.version>
+		<maven.failsafe.plugin.version>3.5.3</maven.failsafe.plugin.version>
+		<org.mapstruct.version>1.6.3</org.mapstruct.version>
+		<org.springdoc.version>2.8.9</org.springdoc.version>
+		<archunit.version>1.4.1</archunit.version>
+		<datafaker.version>2.4.2</datafaker.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>${org.springdoc.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-hateoas</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<!-- Mapper library to automate model transformations -->
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>${org.mapstruct.version}</version>
+		</dependency>
+		<!-- Testing libraries -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.tngtech.archunit</groupId>
+			<artifactId>archunit-junit5</artifactId>
+			<version>${archunit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-library</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- Datafaker is a library for Java and Kotlin to generate fake data -->
+		<dependency>
+			<groupId>net.datafaker</groupId>
+			<artifactId>datafaker</artifactId>
+			<version>${datafaker.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<!-- Make final jar, a layered jar -->
+					<layers>
+						<enabled>true</enabled>
+					</layers>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<!--
+                                To generate build information to be included via
+                                http(s)://<hostname>:<port>/actuator/info
+                             -->
+							<goal>build-info</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<enablePreview>true</enablePreview>
+					<compilerArgs>
+						<arg>-Xlint</arg>
+					</compilerArgs>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+							<version>${lombok.version}</version>
+						</path>
+						<path>
+							<groupId>org.mapstruct</groupId>
+							<artifactId>mapstruct-processor</artifactId>
+							<version>${org.mapstruct.version}</version>
+						</path>
+					</annotationProcessorPaths>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>properties</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven.surefire.plugin.version}</version>
+				<configuration>
+					<argLine>--enable-preview</argLine>
+					<argLine>--enable-native-access=ALL-UNNAMED</argLine>
+					<argLine>-javaagent:${org.mockito:mockito-core:jar}</argLine>
+					<includes>
+						<include>**/*Tests.java</include>
+						<include>**/*Test.java</include>
+					</includes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>${maven.failsafe.plugin.version}</version>
+				<configuration>
+					<argLine>--enable-preview</argLine>
+					<argLine>--enable-native-access=ALL-UNNAMED</argLine>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

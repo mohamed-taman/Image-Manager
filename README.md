@@ -9,15 +9,15 @@ The tool enables user registration, login, image uploads (including bulk via ZIP
 
 ## 🚀 Core Functionalities
 
-- 🔐 **User Management**: User registration, login, and JWT token-based authentication
+- 🔐 **User Management**: User registration, login, and JWT token-based authentication.
 - 🖼️ **Image Management**: 
   - Upload single images or ZIP files with multiple images.
   - View, update, delete, or download individual or bulk images.
-- 🧾 Automatic conversion of SVG images to high-quality PNG format
+- 🧾 Automatic conversion of SVG images to high-quality PNG format.
 - 🔍 **Image Search**: Filter images by metadata and keywords.
-- 🧑‍💼 User profile management (update personal info)
-- 📥 Download individual images or as ZIP
-- 📜 Swagger UI for API documentation
+- 🧑‍💼 User profile management (update personal info).
+- 📥 Download individual images or as ZIP.
+- 📜 Swagger UI for API documentation.
 
 ---
 

@@ -1,0 +1,21 @@
+spring:
+  jmx:
+    enabled: false
+  # Database configurations
+  jpa:
+    properties:
+      hibernate:
+        generate_statistics: false
+
+logging.level:
+  org:
+    hibernate:
+      SQL: info
+      type.descriptor.sql.BasicBinder: info
+    springframework:
+      cache: info
+      web: debug
+    image:
+      manager: debug
+  web: debug
+  root: info

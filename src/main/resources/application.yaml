@@ -1,0 +1,105 @@
+# Development profile
+## Custom application properties
+app:
+  version: @project.version@
+  short-name: imt
+  api:
+    version: 'v1'
+
+# Spring properties
+spring:
+  application:
+    name: Image-management-tool
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
+  # Database configurations
+  datasource:
+    url: jdbc:h2:./target/db/imageDB
+    username: sa
+    hikari:
+      initialization-fail-timeout: 60000
+      connection-test-query: SELECT 1
+      maximum-pool-size: 10
+  h2:
+    console:
+      enabled: true
+      path: /db-console
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+        # Generate statistics for Hibernate's performance monitoring
+        # This will provide additional information about your database usage.
+        # Uncomment the following line to generate statistics.
+      generate_statistics: true
+      # Switching on batch insert
+      # Take the time to group inserts by entity, creating larger batches.
+      order_inserts: true
+      order_updates: true
+      # collect inserts in batches of 100
+      jdbc:
+        size: 100
+  sql:
+    init:
+      schema-locations: classpath*:db/migration/schema.sql
+      data-locations: classpath*:db/migration/data.sql
+      platform: h2
+      mode: always
+
+# Server configs
+server:
+  port: 8090
+  ## Should be included to show message, if not error message will be empty
+  error:
+    include-message: always
+    include-binding-errors: always
+  servlet:
+    context-path: /api/${app.api.version}/${app.short-name}/service
+
+# Application health and information management
+management:
+  info.git:
+    mode: full
+    enabled: true
+  endpoints.web.exposure.include: "*"
+  endpoint:
+    health.show-details: always
+    shutdown:
+      access: none
+
+# Logging settings
+logging.level:
+  org:
+    hibernate:
+      SQL: debug
+      type.descriptor.sql.BasicBinder: trace
+    springframework:
+      cache: trace
+      web: debug
+    image:
+      manager: debug
+  web: debug
+  root: info
+
+# OpenAPI (Swagger) settings
+springdoc:
+  # swagger-ui custom path
+  swagger-ui:
+    path: /doc/index.html
+    operationsSorter: alpha
+    tagsSorter: alpha
+    displayRequestDuration: true
+    syntaxHighlight:
+      theme: arta
+  # /api-docs endpoint custom path
+  api-docs:
+    path: /api-docs
+  # to display the actuator endpoints.
+  show-actuator: false
