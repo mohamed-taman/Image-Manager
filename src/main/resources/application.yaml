@@ -6,6 +6,16 @@ app:
   api:
     version: 'v1'
 
+# Server configs
+server:
+  port: 8090
+  ## Should be included to show a message, if not, an error message will be empty
+  error:
+    include-message: always
+    include-binding-errors: always
+  servlet:
+    context-path: /api/${app.api.version}/${app.short-name}/service
+
 # Spring properties
 spring:
   application:
@@ -17,7 +27,7 @@ spring:
       max-request-size: 10MB
   # Database configurations
   datasource:
-    url: jdbc:h2:./target/db/imageDB
+    url: jdbc:h2:./target/db/${app.short-name}DB
     username: sa
     hikari:
       initialization-fail-timeout: 60000
@@ -40,7 +50,7 @@ spring:
         # Uncomment the following line to generate statistics.
       generate_statistics: true
       # Switching on batch insert
-      # Take the time to group inserts by entity, creating larger batches.
+      # Takes the time to group inserts by entity, creating larger batches.
       order_inserts: true
       order_updates: true
       # collect inserts in batches of 100
@@ -52,41 +62,6 @@ spring:
       data-locations: classpath*:db/migration/data.sql
       platform: h2
       mode: always
-
-# Server configs
-server:
-  port: 8090
-  ## Should be included to show message, if not error message will be empty
-  error:
-    include-message: always
-    include-binding-errors: always
-  servlet:
-    context-path: /api/${app.api.version}/${app.short-name}/service
-
-# Application health and information management
-management:
-  info.git:
-    mode: full
-    enabled: true
-  endpoints.web.exposure.include: "*"
-  endpoint:
-    health.show-details: always
-    shutdown:
-      access: none
-
-# Logging settings
-logging.level:
-  org:
-    hibernate:
-      SQL: debug
-      type.descriptor.sql.BasicBinder: trace
-    springframework:
-      cache: trace
-      web: debug
-    image:
-      manager: debug
-  web: debug
-  root: info
 
 # OpenAPI (Swagger) settings
 springdoc:
@@ -103,3 +78,28 @@ springdoc:
     path: /api-docs
   # to display the actuator endpoints.
   show-actuator: false
+
+# Logging settings
+logging.level:
+  org:
+    hibernate:
+      SQL: debug
+      type.descriptor.sql.BasicBinder: trace
+    springframework:
+      cache: trace
+      web: debug
+    image:
+      manager: debug
+  web: debug
+  root: info
+
+# Application health and information management
+management:
+  info.git:
+    mode: full
+    enabled: true
+  endpoints.web.exposure.include: "*"
+  endpoint:
+    health.show-details: always
+    shutdown:
+      access: none

@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Bean;
 @Log4j2
 public class ImageManagementApplication {
 
-    public static void main(String... args) {
+    static void main(String... args) {
 
         SpringApplication.run(ImageManagementApplication.class, args);
     }

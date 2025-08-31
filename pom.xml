@@ -5,8 +5,8 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.5.0</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<version>3.5.5</version>
+		<relativePath/> <!-- lookup parent from a repository -->
 	</parent>
 
 	<groupId>com.taman</groupId>
@@ -44,21 +44,21 @@
 			</roles>
 		</developer>
 	</developers>
-	<!-- End -Image Management Tool Project Owner -->
-	<!-- Start -Image Management Tool source repository -->
+	<!-- End - Image Management Tool Project Owner -->
+	<!-- Start - Image Management Tool source repository -->
 	<scm>
 		<connection>https://github.com/mohamed-taman/Image-Manager.git</connection>
 		<developerConnection>git@github.com:mohamed-taman/Image-Manager.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
-	<!-- End -Image Management Tool source repository -->
+	<!-- End - Image Management Tool source repository -->
 
-	<!-- Start -Image Management Tool issue management -->
+	<!-- Start - Image Management Tool issue management -->
 	<issueManagement>
 		<system>GitHub</system>
 		<url>https://github.com/mohamed-taman/Image-Manager/projects/1</url>
 	</issueManagement>
-	<!-- End -Image Management Tool issue management -->
+	<!-- End - Image Management Tool issue management -->
 
 	<properties>
 		<java.version>24</java.version>
